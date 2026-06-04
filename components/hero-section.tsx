@@ -12,7 +12,7 @@ export function HeroSection() {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: "#0a0a0a" }}
     >
       {/* Background MINDSET watermark text */}
@@ -30,9 +30,8 @@ export function HeroSection() {
       </div>
 
       {/* Background Image - Dramatic muscular figure */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0">
         <div className="relative w-full h-full">
-          {/* Main hero image - dramatic muscular back */}
           <img
             src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=1600&q=80"
             alt="Muscular athlete from behind"
@@ -46,75 +45,65 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Content - Centered on mobile, bottom-aligned on desktop */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-8 text-center flex flex-col items-stretch justify-end flex-1 pb-32 sm:pb-28 md:pb-24">
+      {/* Tagline - Centered on screen (separate layer, not inside justify-end) */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center px-6 sm:px-8 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full space-y-4 sm:space-y-6"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center"
         >
-          {/* Main tagline */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-[1.6rem] sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-snug tracking-wide"
-            >
-              {"It's"} Time To Become The <br className="sm:hidden" /> Main Character of Your{" "}
-              <span className="text-orange-500 font-bold">LIFE</span>
-            </motion.h1>
+          <h1 className="text-[1.6rem] sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-snug tracking-wide">
+            {"It's"} Time To Become The <br className="sm:hidden" /> Main Character of Your{" "}
+            <span className="text-orange-500 font-bold">LIFE</span>
+          </h1>
 
-            {/* Mirror reflection effect - contained properly */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative mt-1 h-16 md:h-16 overflow-hidden"
-            >
-              <div
-                className="absolute inset-x-0 top-0 mt-0"
-                style={{
-                  transform: "scaleY(-1)",
-                  maskImage: "linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%)"
-                }}
-              >
-                <p
-                  className="text-[1.4rem] sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-wide text-white/30"
-                >
-                  {"It's"} Time To Become The Main Character of Your{" "}
-                  <span className="text-orange-500/30">LIFE</span>
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* CTA Buttons - Two functional buttons */}
+          {/* Mirror reflection effect */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative mt-1 h-10 sm:h-16 overflow-hidden"
           >
-            <Link
-              href="#membership"
-              className="w-full sm:w-auto inline-block px-8 py-2.5 sm:py-4 text-base sm:text-lg font-semibold text-white bg-orange-500 rounded-lg transition-all duration-300 hover:bg-orange-600 hover:scale-105 hover:shadow-[0_0_30px_rgba(234,88,12,0.4)] text-center"
+            <div
+              className="absolute inset-x-0 top-0"
+              style={{
+                transform: "scaleY(-1)",
+                maskImage: "linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%)",
+                WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%)"
+              }}
             >
-              {"Let's Grind"}
-            </Link>
-            <Link
-              href="#programs"
-              className="w-full sm:w-auto inline-block px-8 py-2.5 sm:py-4 text-base sm:text-lg font-semibold text-white border-2 border-white/30 rounded-lg transition-all duration-300 hover:border-orange-500 hover:text-orange-500 hover:scale-105 text-center"
-            >
-              Explore Programs
-            </Link>
+              <p className="text-[1.4rem] sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-wide text-white/30">
+                {"It's"} Time To Become The Main Character of Your{" "}
+                <span className="text-orange-500/30">LIFE</span>
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
-
+      {/* CTA Buttons - Anchored to bottom */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-8 lg:px-8 mt-auto pb-12 sm:pb-16 md:pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+        >
+          <Link
+            href="#membership"
+            className="w-full sm:w-auto inline-block px-8 py-2.5 sm:py-4 text-base sm:text-lg font-semibold text-white bg-orange-500 rounded-lg transition-all duration-300 hover:bg-orange-600 hover:scale-105 hover:shadow-[0_0_30px_rgba(234,88,12,0.4)] text-center"
+          >
+            {"Let's Grind"}
+          </Link>
+          <Link
+            href="#programs"
+            className="w-full sm:w-auto inline-block px-8 py-2.5 sm:py-4 text-base sm:text-lg font-semibold text-white border-2 border-white/30 rounded-lg transition-all duration-300 hover:border-orange-500 hover:text-orange-500 hover:scale-105 text-center"
+          >
+            Explore Programs
+          </Link>
+        </motion.div>
+      </div>
     </section>
   )
 }
