@@ -127,7 +127,10 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
               >
                 {letter}
               </motion.span>
+          
+              
             ))}
+            
           </div>
         </div>
 
@@ -157,6 +160,8 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
             ))}
           </div>
         )}
+
+        
       </motion.div>
     </AnimatePresence>
   )

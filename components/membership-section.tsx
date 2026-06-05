@@ -8,7 +8,7 @@ import Link from "next/link"
 const plans = [
   {
     name: "Basic",
-    price: 49,
+    price: 2000,
     period: "month",
     description: "Perfect for beginners starting their fitness journey",
     features: [
@@ -22,8 +22,8 @@ const plans = [
   },
   {
     name: "Pro",
-    price: 99,
-    period: "month",
+    price: 4999,
+    period: "half year",
     description: "For dedicated athletes seeking serious results",
     features: [
       "Everything in Basic",
@@ -37,8 +37,8 @@ const plans = [
   },
   {
     name: "Elite",
-    price: 199,
-    period: "month",
+    price: 7999,
+    period: "year",
     description: "The ultimate premium fitness experience",
     features: [
       "Everything in Pro",
@@ -90,11 +90,10 @@ export function MembershipSection() {
               className={`relative group ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""}`}
             >
               <div
-                className={`h-full rounded-3xl p-6 sm:p-8 transition-all duration-300 group-hover:-translate-y-2 ${
-                  plan.highlighted
-                    ? "glass border-2 border-primary glow-orange"
-                    : "glass border border-border group-hover:border-primary/50"
-                }`}
+                className={`h-full rounded-3xl p-6 sm:p-8 transition-all duration-300 group-hover:-translate-y-2 ${plan.highlighted
+                  ? "glass border-2 border-primary glow-orange"
+                  : "glass border border-border group-hover:border-primary/50"
+                  }`}
               >
                 {/* Popular badge */}
                 {plan.highlighted && (
@@ -108,7 +107,7 @@ export function MembershipSection() {
                   <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
                   <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
                   <div className="mt-6">
-                    <span className="text-5xl font-black text-foreground">${plan.price}</span>
+                    <span className="text-5xl font-black text-foreground">₹{plan.price}</span>
                     <span className="text-muted-foreground">/{plan.period}</span>
                   </div>
                 </div>
@@ -118,14 +117,12 @@ export function MembershipSection() {
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
                       <div
-                        className={`p-1 rounded-full ${
-                          plan.highlighted ? "bg-primary" : "bg-primary/20"
-                        }`}
+                        className={`p-1 rounded-full ${plan.highlighted ? "bg-primary" : "bg-primary/20"
+                          }`}
                       >
                         <Check
-                          className={`w-3 h-3 ${
-                            plan.highlighted ? "text-primary-foreground" : "text-primary"
-                          }`}
+                          className={`w-3 h-3 ${plan.highlighted ? "text-primary-foreground" : "text-primary"
+                            }`}
                         />
                       </div>
                       <span className="text-sm text-muted-foreground">{feature}</span>
@@ -136,11 +133,10 @@ export function MembershipSection() {
                 {/* CTA Button */}
                 <Link
                   href="#contact"
-                  className={`block w-full py-4 rounded-xl text-center font-semibold transition-all ${
-                    plan.highlighted
-                      ? "bg-primary text-primary-foreground hover:bg-orange-glow"
-                      : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"
-                  }`}
+                  className={`block w-full py-4 rounded-xl text-center font-semibold transition-all ${plan.highlighted
+                    ? "bg-primary text-primary-foreground hover:bg-orange-glow"
+                    : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"
+                    }`}
                 >
                   Get Started
                 </Link>
